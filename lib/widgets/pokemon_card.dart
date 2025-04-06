@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokedex/models/pokemon.dart';
 import 'package:pokedex/providers/pokemon_data_providers.dart';
+import 'package:pokedex/widgets/pokemon_stats_card.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class PokemonCard extends ConsumerWidget {
@@ -36,7 +37,13 @@ class PokemonCard extends ConsumerWidget {
       ignoreContainers: true,
       child: GestureDetector(
         onTap: () {
-          
+          if (!isLoading) {
+            showDialog(
+                context: context,
+                builder: (_) {
+                  return PokemonStatsCard(pokemonURL: pokemonURL);
+                });
+          }
         },
         child: Container(
           margin: EdgeInsets.symmetric(
@@ -103,7 +110,8 @@ class PokemonCard extends ConsumerWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      _favoritePokemonProvider.removeFavoritePokemon(pokemonURL);
+                      _favoritePokemonProvider
+                          .removeFavoritePokemon(pokemonURL);
                     },
                     child: Icon(
                       Icons.favorite,
