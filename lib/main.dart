@@ -3,15 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pokedex/pages/home_page.dart';
+import 'package:pokedex/services/database_services.dart';
 import 'package:pokedex/services/http_service.dart';
 
-void main() async{
+void main() async {
   await _setupServices();
   runApp(const MyApp());
 }
 
 Future<void> _setupServices() async {
   GetIt.instance.registerSingleton<HTTPService>(HTTPService());
+  GetIt.instance.registerSingleton<DatabaseService>(DatabaseService());
 }
 
 class MyApp extends StatelessWidget {

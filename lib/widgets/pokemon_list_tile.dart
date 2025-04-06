@@ -22,7 +22,7 @@ class PokemonListTile extends ConsumerWidget {
     }, error: (e, stackTrace) {
       return Text("Error: $e");
     }, loading: () {
-      return _tile(context, false, null);
+      return _tile(context, true, null);
     });
   }
 
@@ -41,19 +41,19 @@ class PokemonListTile extends ConsumerWidget {
       ),
       subtitle: Text("Hash ${pokemon?.moves?.length.toString() ?? 0} moves"),
       trailing: IconButton(
-          onPressed: () {
-            if (_favoritePokemons.contains(pokemonURL)) {
-              _favoritePokemonProvider.removeFavoritePokemon(pokemonURL);
-            } else {
-              _favoritePokemonProvider.addFavoritePokemon(pokemonURL);
-            }
-          },
-          icon: Icon(
-            _favoritePokemons.contains(pokemonURL)
+        onPressed: () {
+          if (_favoritePokemons.contains(pokemonURL)) {
+            _favoritePokemonProvider.removeFavoritePokemon(pokemonURL);
+          } else {
+            _favoritePokemonProvider.addFavoritePokemon(pokemonURL);
+          }
+        },
+        icon: Icon(
+          _favoritePokemons.contains(pokemonURL)
               ? Icons.favorite
               : Icons.favorite_border,
-            color: Colors.red,
-          ),
+          color: Colors.red,
+        ),
       ),
     );
   }
