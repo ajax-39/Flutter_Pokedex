@@ -6,12 +6,17 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 class PokemonListTile extends ConsumerWidget {
   final String pokemonURL;
+  late FavoritePokemonProvider _favoritePokemonProvider;
+  late List<String> _favoritePokemons;
 
-  const PokemonListTile({super.key, required this.pokemonURL});
+  PokemonListTile({super.key, required this.pokemonURL});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pokemon = ref.watch(pokemonDataProvider(pokemonURL));
+    _favoritePokemonProvider = ref.watch(favoritePokemonProvider.notifier);
+    _favoritePokemons = ref.watch(favoritePokemonProvider);
+
     return pokemon.when(data: (data) {
       return _tile(context, false, data);
     }, error: (e, stackTrace) {
@@ -36,10 +41,20 @@ class PokemonListTile extends ConsumerWidget {
       ),
       subtitle: Text("Hash ${pokemon?.moves?.length.toString() ?? 0} moves"),
       trailing: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            if (_favoritePokemons.contains(pokemonURL)) {
+              _favoritePokemonProvider.removeFavoritePokemon(pokemonURL);
+            } else {
+              _favoritePokemonProvider.addFavoritePokemon(pokemonURL);
+            }
+          },
           icon: Icon(
-            Icons.favorite_border,
-          )),
+            _favoritePokemons.contains(pokemonURL)
+              ? Icons.favorite
+              : Icons.favorite_border,
+            color: Colors.red,
+          ),
+      ),
     );
   }
 }
