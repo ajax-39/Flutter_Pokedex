@@ -2,6 +2,18 @@
 
 Flutter application that uses the PokeAPI to fetch and display information about Pokémon. This app leverages Riverpod for efficient state management, Dio for RESTful API requests, and Shared Preferences for local storage of favorite Pokémon. Users can browse through an extensive list of Pokémon with infinite scrolling, view detailed information about each creature, and save their favorites for quick access.
 
+## Demo Preview   
+[![Pokedex Demo](https://img.youtube.com/vi/r-7Yymp0Ii4/1.jpg)](https://youtu.be/r-7Yymp0Ii4)  
+
+## Hosted URL
+Download the latest APK and start playing! 🎮  
+<a href="https://bit.ly/4i12pFx" target="_blank">
+  <img src="https://github.com/user-attachments/assets/61a2bce1-a6a0-4b44-a835-d31e60dfbf4f" alt="Download APK" width="100" height ="100"/>
+</a>  
+🔽 **Click Below to Download** 🔽  
+[📥 Download APK](https://bit.ly/4i12pFx)
+
+
 ## Features
 
 - **Browse All Pokémon**: Scroll through the complete list of Pokémon with infinite scrolling
