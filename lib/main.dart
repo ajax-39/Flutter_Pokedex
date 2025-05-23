@@ -28,6 +28,14 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
             useMaterial3: true,
+            appBarTheme: const AppBarTheme(
+              centerTitle: true,
+              titleTextStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+                color: Colors.white,
+              ),
+            ),
             textTheme: GoogleFonts.quattrocentoSansTextTheme()),
         home: const HomePage(),
       ),
